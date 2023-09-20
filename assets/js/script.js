@@ -20,3 +20,25 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 9. Confronto quanti e quali numeri sono stati indovinati tramite una funzione(passaggio da ricontrollare);
 10. Stampo il messaggio con le informazioni corrispondenti;
 */
+
+const elementRef = document.querySelector('h1');
+const min = 0;
+const max = 10;
+let randomNum = [];
+
+for(let i = 0; i<5; i++) {
+    randomNum = randomizer(min, max);
+elementRef.innerHTML += `<h1>${randomNum}</h1>`;
+    console.log(randomNum);
+};
+
+
+/**
+ *
+ * @param {number} min
+ * @param {number} max
+ * @returns
+ */
+function randomizer(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
