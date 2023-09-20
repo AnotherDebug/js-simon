@@ -35,9 +35,7 @@ for (let i = 0; i < elementsNumber; i++) {
 
 printResult(elementRef, randomNum);
 
-setTimeout(function () {
-  reset();
-}, 5000);
+setTimeout(reset, 5000);
 
 setTimeout(function () {
   getPromtValues();
