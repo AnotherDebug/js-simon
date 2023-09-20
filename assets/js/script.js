@@ -24,7 +24,7 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 const elementRef = document.querySelector("h1");
 const min = 0;
 const max = 30;
-const elementsNumber = 7;
+const elementsNumber = 5;
 const randomNum = [];
 const requestNum = [];
 
@@ -41,7 +41,7 @@ setTimeout(function () {
 
 setTimeout(function () {
   getPromtValues();
-  const compareResult = compareValues();
+  const compareResult = compareValues(randomNum, requestNum);
   console.log(compareResult);
   if (compareResult.length === randomNum.length) {
     printResult(elementRef, "Hai indovinato tutti i numeri");
@@ -68,12 +68,13 @@ function getPromtValues() {
   }
 }
 
-function compareValues() {
+function compareValues(array1, array2) {
   const result = [];
-  for (let i = 0; i < requestNum.length; i++) {
-    for (let j = 0; j < randomNum.length; j++) {
-      if (randomNum[j] === requestNum[i]) {
-        result.push(requestNum[i]);
+  for (let i = 0; i < array2.length; i++) {
+    for (let j = 0; j < array1.length; j++) {
+      if (array1[j] === array2[i]) {
+        result.push(array2[i]);
+        console.log(result);
         break;
       }
     }
