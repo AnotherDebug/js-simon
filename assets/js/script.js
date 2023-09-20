@@ -30,12 +30,27 @@ for(let i = 0; i<5; i++) {
     randomNum = randomizer(min, max);
 elementRef.innerHTML += `<h1>${randomNum}</h1>`;
     console.log(randomNum);
+    setTimeout(reset, 5000);
 };
 
-setTimeout(function() {
-    elementRef.innerHTML = "";
-}, 5000);
+setTimeout(requestNum, 6000);
 
+
+
+function requestNum () {
+    for(let i = 0; i<5; i++) {
+const request = prompt('Inserisci un numero visualizzato');
+console.log(request);
+
+    };
+};
+
+
+
+
+function reset () {
+    elementRef.innerHTML = "";
+};
 
 /**
  *
