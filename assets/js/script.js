@@ -32,6 +32,10 @@ elementRef.innerHTML += `<h1>${randomNum}</h1>`;
     console.log(randomNum);
 };
 
+setTimeout(function() {
+    elementRef.innerHTML = "";
+}, 5000);
+
 
 /**
  *
