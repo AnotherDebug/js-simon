@@ -21,36 +21,65 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 10. Stampo il messaggio con le informazioni corrispondenti;
 */
 
-const elementRef = document.querySelector('h1');
+const elementRef = document.querySelector("h1");
 const min = 0;
-const max = 10;
-let randomNum = [];
+const max = 30;
+const elementsNumber = 7;
+const randomNum = [];
+const requestNum = [];
 
-for(let i = 0; i<5; i++) {
-    randomNum = randomizer(min, max);
-elementRef.innerHTML += `<h1>${randomNum}</h1>`;
-    console.log(randomNum);
-    setTimeout(reset, 5000);
-};
+for (let i = 0; i < elementsNumber; i++) {
+  randomNum.push(randomizer(min, max));
+  console.log(randomNum);
+}
 
-setTimeout(requestNum, 6000);
+printResult(elementRef, randomNum);
 
+setTimeout(function () {
+  reset();
+}, 5000);
 
+setTimeout(function () {
+  getPromtValues();
+  const compareResult = compareValues();
+  console.log(compareResult);
+  if (compareResult.length === randomNum.length) {
+    printResult(elementRef, "Hai indovinato tutti i numeri");
+  } else if (compareResult.length > 0) {
+    printResult(elementRef, "Hai indovinato soltanto");
+    printResult(elementRef, compareResult);
+  } else {
+    printResult(elementRef, "Non hai indovinato alcun numero");
+  }
+}, 6000);
 
-function requestNum () {
-    for(let i = 0; i<5; i++) {
-const request = prompt('Inserisci un numero visualizzato');
-console.log(request);
+function printResult(element, text) {
+  element.innerHTML += `<h1>${text}</h1>`;
+}
 
-    };
-};
+function reset() {
+  elementRef.innerHTML = "";
+}
 
+function getPromtValues() {
+  for (let i = 0; i < elementsNumber; i++) {
+    requestNum.push(parseInt(prompt("Inserisci un numero visualizzato")));
+    console.log(requestNum);
+  }
+}
 
-
-
-function reset () {
-    elementRef.innerHTML = "";
-};
+function compareValues() {
+  const result = [];
+  for (let i = 0; i < requestNum.length; i++) {
+    for (let j = 0; j < randomNum.length; j++) {
+      if (randomNum[j] === requestNum[i]) {
+        result.push(requestNum[i]);
+        break;
+      }
+    }
+  }
+  return result;
+}
 
 /**
  *
@@ -59,5 +88,5 @@ function reset () {
  * @returns
  */
 function randomizer(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
