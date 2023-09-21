@@ -44,7 +44,7 @@ for (let i = 0; i < elementsNumber; i++) {
 }
 
 //5. Stampo i valori in pagina
-printResult(elementRef, randomNum);
+printResult(elementRef, randomNum.join(', '));
 
 //6. Reset settato a 5 secondi
 setTimeout(reset, 5000);
