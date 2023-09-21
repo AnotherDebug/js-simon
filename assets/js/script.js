@@ -21,44 +21,61 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 10. Stampo il messaggio con le informazioni corrispondenti;
 */
 
+// Riferimenti
 const elementRef = document.querySelector("h1");
+
+//Variabili di controllo randomizer
 const min = 0;
 const max = 30;
+
+//variabile di controllo livello di difficoltà
 const elementsNumber = 5;
+
+//2. Collection di numeri random 
 const randomNum = [];
+//8. Collection di numeri Utente richiesti
 const requestNum = [];
 
+//1. Ciclo for che itera il push dei numeri random
 for (let i = 0; i < elementsNumber; i++) {
+  //4.
   randomNum.push(randomizer(min, max));
   console.log(randomNum);
 }
 
+//5. Stampo i valori in pagina
 printResult(elementRef, randomNum);
 
+//6. Reset settato a 5 secondi
 setTimeout(reset, 5000);
 
+//7. Prendo i dati dal prompt, li comparo e stampo i risultati corrispondenti
 setTimeout(function () {
   getPromtValues();
   const compareResult = compareValues(randomNum, requestNum);
   console.log(compareResult);
+  //10. Stampo tutti i possibili risultati
   if (compareResult.length === randomNum.length) {
-    printResult(elementRef, "Hai indovinato tutti i numeri");
+    printResult(elementRef, "Bravo! Hai indovinato tutti i numeri!!");
   } else if (compareResult.length > 0) {
     printResult(elementRef, "Hai indovinato soltanto " + compareResult.length + " numeri!");
     printResult(elementRef, compareResult);
   } else {
-    printResult(elementRef, "Non hai indovinato alcun numero");
+    printResult(elementRef, "Non hai indovinato alcun numero!!");
   }
 }, 6000);
 
+//10. Stampo il messaggio con le informazioni corrispondenti
 function printResult(element, text) {
   element.innerHTML += `<h1>${text}</h1>`;
 }
 
+//6. funzione reset invocata nel setTimeout
 function reset() {
   elementRef.innerHTML = "";
 }
 
+//7. Funzione che itera il push dei numeri richiesti
 function getPromtValues() {
   for (let i = 0; i < elementsNumber; i++) {
     requestNum.push(parseInt(prompt("Inserisci un numero visualizzato")));
@@ -66,6 +83,7 @@ function getPromtValues() {
   }
 }
 
+//9. Confronto quali numeri sono stati indovinati
 function compareValues(array1, array2) {
   const result = [];
   for (let i = 0; i < array2.length; i++) {
@@ -80,6 +98,7 @@ function compareValues(array1, array2) {
   return result;
 }
 
+//3. Generatore di numeri random
 /**
  *
  * @param {number} min
