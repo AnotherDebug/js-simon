@@ -44,7 +44,7 @@ setTimeout(function () {
   if (compareResult.length === randomNum.length) {
     printResult(elementRef, "Hai indovinato tutti i numeri");
   } else if (compareResult.length > 0) {
-    printResult(elementRef, "Hai indovinato soltanto");
+    printResult(elementRef, "Hai indovinato soltanto " + compareResult.length + " numeri!");
     printResult(elementRef, compareResult);
   } else {
     printResult(elementRef, "Non hai indovinato alcun numero");
