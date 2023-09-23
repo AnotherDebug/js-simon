@@ -37,10 +37,16 @@ const randomNum = [];
 const requestNum = [];
 
 //1. Ciclo for che itera il push dei numeri random
-for (let i = 0; i < elementsNumber; i++) {
-  //4.
-  randomNum.push(randomizer(min, max));
-  console.log(randomNum);
+function uniqueRandomNum(min, max, loop) {
+  const rand = [];
+  while (rand.length < loop) {
+    const randomNumber = randomizer(min, max);
+    console.log(randomNumber);
+    if (!rand.includes(randomNumber)) {
+        rand.push(randomNumber);
+      console.log(rand);
+    }
+  }
 }
 
 //5. Stampo i valori in pagina
