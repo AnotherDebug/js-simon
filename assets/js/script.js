@@ -31,26 +31,16 @@ const max = 30;
 //variabile di controllo livello di difficoltà
 const elementsNumber = 5;
 
-//2. Collection di numeri random 
-const randomNum = [];
+//2. Collection di numeri random univoci
+const randomNum = uniqueRandomNum(1, 100, elementsNumber);
+console.log(randomNum);
 //8. Collection di numeri Utente richiesti
 const requestNum = [];
 
-//1. Ciclo for che itera il push dei numeri random
-function uniqueRandomNum(min, max, loop) {
-  const rand = [];
-  while (rand.length < loop) {
-    const randomNumber = randomizer(min, max);
-    console.log(randomNumber);
-    if (!rand.includes(randomNumber)) {
-        rand.push(randomNumber);
-      console.log(rand);
-    }
-  }
-}
+
 
 //5. Stampo i valori in pagina
-printResult(elementRef, randomNum.join(', '));
+printResult(elementRef, randomNum);
 
 //6. Reset settato a 5 secondi
 setTimeout(reset, 5000);
@@ -70,6 +60,18 @@ setTimeout(function () {
     printResult(elementRef, "Non hai indovinato alcun numero!!");
   }
 }, 6000);
+
+//1. Ciclo for che itera il push dei numeri random
+function uniqueRandomNum(min, max, loop) {
+  const rand = [];
+  while (rand.length < loop) {
+    const randomNumber = randomizer(min, max);
+    if (!rand.includes(randomNumber)) {
+        rand.push(randomNumber);
+    }
+  }
+  return rand;
+}
 
 //10. Stampo il messaggio con le informazioni corrispondenti
 function printResult(element, text) {
